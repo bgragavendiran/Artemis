@@ -66,38 +66,41 @@ public class OtpEditText extends AppCompatEditText {
     public void setCustomSelectionActionModeCallback(ActionMode.Callback actionModeCallback) {
         throw new RuntimeException("setCustomSelectionActionModeCallback() not supported.");
     }
+@Override
+protected void onDraw(Canvas canvas) {
+    int availableWidth = getWidth() - getPaddingRight() - getPaddingLeft();
+    float mCharSize;
+    if (mSpace < 0) {
+        mCharSize = (availableWidth / (mNumChars * 2 - 1));
+    } else {
+        mCharSize = (availableWidth - (mSpace * (mNumChars - 1))) / mNumChars;
+    }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        int availableWidth = getWidth() - getPaddingRight() - getPaddingLeft();
-        float mCharSize;
-        if (mSpace < 0) {
-            mCharSize = (availableWidth / (mNumChars * 2 - 1));
-        } else {
-            mCharSize = (availableWidth - (mSpace * (mNumChars - 1))) / mNumChars;
+    int startX = getPaddingLeft();
+    int bottom = getHeight() - getPaddingBottom();
+
+    // Set the text color to white for drawing
+    getPaint().setColor(getResources().getColor(android.R.color.white));
+
+    // Text Width
+    Editable text = getText();
+    int textLength = text.length();
+    float[] textWidths = new float[textLength];
+    getPaint().getTextWidths(getText(), 0, textLength, textWidths);
+
+    for (int i = 0; i < mNumChars; i++) {
+        canvas.drawLine(startX, bottom, startX + mCharSize, bottom, mLinesPaint);
+        if (getText().length() > i) {
+            float middle = startX + mCharSize / 2;
+            canvas.drawText(text, i, i + 1, middle - textWidths[0] / 2, bottom - mLineSpacing, getPaint());
         }
-
-        int startX = getPaddingLeft();
-        int bottom = getHeight() - getPaddingBottom();
-
-        //Text Width
-        Editable text = getText();
-        int textLength = text.length();
-        float[] textWidths = new float[textLength];
-        getPaint().getTextWidths(getText(), 0, textLength, textWidths);
-
-        for (int i = 0; i < mNumChars; i++) {
-            canvas.drawLine(startX, bottom, startX + mCharSize, bottom, mLinesPaint);
-            if (getText().length() > i) {
-                float middle = startX + mCharSize / 2;
-                canvas.drawText(text, i, i + 1, middle - textWidths[0] / 2, bottom - mLineSpacing, getPaint());
-            }
-            if (mSpace < 0) {
-                startX += mCharSize * 2;
-            } else {
-                startX += mCharSize + mSpace;
-            }
+        if (mSpace < 0) {
+            startX += mCharSize * 2;
+        } else {
+            startX += mCharSize + mSpace;
         }
     }
+}
+
 }
 

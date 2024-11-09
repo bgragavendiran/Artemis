@@ -14,6 +14,8 @@
     <string name="title_notifications">Notifications</string>
     <string name="image_capture_batches">Image Capture Batches</string>
     <string name="add_new_batch">Add new batch</string>
+    <string name="keep_track_of_image_data_sync">Keep Track of Image Data Sync</string>
+    <string name="image_sync_status">Image Sync Status</string>
     <string-array name="season_array">
         <item>Winter</item>
         <item>Spring</item>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -9,7 +10,9 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dashboard"
+        android:text="@string/image_sync_status"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/gunmetal"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
@@ -21,34 +24,152 @@
         android:id="@+id/subtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Subtitle"
+        android:text="@string/keep_track_of_image_data_sync"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="#63BBD5"
         android:textSize="16sp"
         android:layout_below="@id/titleText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp" />
 
-    <!-- Circular Progress Bar for Sync Percentage -->
-    <ProgressBar
-        android:id="@+id/syncProgressBar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+    <!-- CardView for Sync Information and ProgressBar -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/lineardummy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/subtitleText"
-        android:layout_centerHorizontal="true"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="0"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:progressDrawable="@drawable/circular_progress"
-        android:layout_marginBottom="16dp"/>
+        android:padding="8dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <!-- Left side: Sync details -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="18sp"
+                        android:fontFamily="@font/firasansbold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gunmetal"
+                        android:text="Total Images: "/>
+                    <TextView
+                        android:id="@+id/totalImage"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="18sp"
+                        android:fontFamily="@font/firasansbold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gunmetal"
+                        android:text="In Sync: "/>
+                    <TextView
+                        android:id="@+id/inSync"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="18sp"
+                        android:fontFamily="@font/firasansbold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gunmetal"
+                        android:text="Out of Sync: "/>
+                    <TextView
+                        android:id="@+id/outOfSync"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Space between Sync details and ProgressBar -->
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- Right side: ProgressBar and Refresh Button -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:id="@+id/syncProgressBar"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:indeterminate="true"
+                    android:max="100"
+                    android:progress="0"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progressDrawable="@drawable/circular_progress"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Refresh"
+                    android:textColor="@color/gunmetal"
+                    android:textSize="12sp"
+                    app:rippleColor="@color/colorPrimaryDark"
+                    app:iconTint="@color/gunmetal"
+                    app:icon="@drawable/baseline_autorenew_24"/>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Label for RecyclerView -->
+    <TextView
+        android:id="@+id/textHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flower Images"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="24sp"
+        android:layout_below="@id/lineardummy"
+        android:layout_marginTop="28dp"/>
 
     <!-- RecyclerView for Grouped Image Data -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imageRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/syncProgressBar"
+        android:layout_below="@id/textHolder"
         android:layout_marginTop="16dp"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp" />
-
+        android:layout_marginBottom="48dp"
+        android:paddingBottom="16dp"/>
 </RelativeLayout>

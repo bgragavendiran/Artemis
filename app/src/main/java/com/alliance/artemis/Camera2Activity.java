@@ -33,6 +33,7 @@ import androidx.core.app.ActivityCompat;
 import com.alliance.artemis.home.HomeActivity;
 import com.alliance.artemis.models.BatchItem;
 import com.alliance.artemis.utils.HashUtil;
+import com.alliance.artemis.utils.ImageDataHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 import net.rehacktive.waspdb.WaspDb;
@@ -50,7 +51,11 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class Camera2Activity extends AppCompatActivity {
+    private ImageDataHelper imageDataHelper;
     private static final int DELAY_BETWEEN_CAPTURES_MS = 1000; // 1 second delay (adjust as needed)
+    private String plantName;
+    private String season;
+    private String climate;
 
     private Handler captureHandler;
     private Runnable captureRunnable;
@@ -78,7 +83,16 @@ public class Camera2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera2);
-
+        // Hide the status bar and navigation bar
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        imageDataHelper = new ImageDataHelper(this);
         textureView = findViewById(R.id.previewFrame);
         imageCountText = findViewById(R.id.imageCountText);
         startStopButton = findViewById(R.id.startStopButton);
@@ -95,7 +109,11 @@ public class Camera2Activity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        showCaptureFormDialog();
 
+    }
+
+    void initializeCamera(){
         textureView.setSurfaceTextureListener(textureListener);
         // Initialize handler for timed capture
         captureHandler = new Handler();
@@ -296,6 +314,7 @@ public class Camera2Activity extends AppCompatActivity {
     private void toggleImageCapture() {
         if (capturing) {
             stopImageCapture();
+
         } else {
             startImageCapture();
         }
@@ -319,7 +338,7 @@ public class Camera2Activity extends AppCompatActivity {
         imageCount++;
 
         Log.d("Camera2Activity", "Image saved to: " + imageFile.getAbsolutePath() + ", count: " + imageCount);
-
+        imageDataHelper.addImageEntry(batchDateUTC, batchFolder.getName(), plantName, imageFile.getName(), false);
         runOnUiThread(() -> imageCountText.setText("Images Captured: " + imageCount));
     } catch (IOException e) {
         Log.e("Camera2Activity", "Failed to save image: " + e.getMessage());
@@ -337,7 +356,18 @@ public class Camera2Activity extends AppCompatActivity {
         if (captureHandler != null && captureRunnable != null) {
             captureHandler.removeCallbacks(captureRunnable);
         }
-        showCaptureFormDialog();
+        // Collect data into hashMap
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("DateTimeUTC", batchDateUTC); // assuming batchDateUTC is defined
+        hashMap.put("PlantName", plantName);
+        hashMap.put("Season", season);
+        hashMap.put("Climate", climate);
+
+        // Save batch metadata to WaspDB
+        BatchItem batchItem = new BatchItem(batchID, batchFolder.getAbsolutePath(), imageCount, hashMap);
+        waspHash.put(batchID, batchItem);
+        startActivity(new Intent(Camera2Activity.this,HomeActivity.class));
+        this.finishAndRemoveTask();
         Toast.makeText(this, "Capture stopped. Images saved to: " + batchFolder.getAbsolutePath(), Toast.LENGTH_LONG).show();
     }
 
@@ -374,27 +404,14 @@ public class Camera2Activity extends AppCompatActivity {
                 R.array.climate_array, android.R.layout.simple_spinner_item);
         climateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         climateSpinner.setAdapter(climateAdapter);
-
         // Set up dialog buttons
-        builder.setPositiveButton("Save", (dialog, which) -> {
-            String plantName = plantNameEditText.getText().toString();
-            String season = seasonSpinner.getSelectedItem().toString();
-            String climate = climateSpinner.getSelectedItem().toString();
+        builder.setPositiveButton("Start Capture", (dialog, which) -> {
+            plantName = plantNameEditText.getText().toString();
+            season = seasonSpinner.getSelectedItem().toString();
+            climate = climateSpinner.getSelectedItem().toString();
 
-            // Collect data into hashMap
-            HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("DateTimeUTC", batchDateUTC); // assuming batchDateUTC is defined
-            hashMap.put("PlantName", plantName);
-            hashMap.put("Season", season);
-            hashMap.put("Climate", climate);
-
-            // Save batch metadata to WaspDB
-            BatchItem batchItem = new BatchItem(batchID, batchFolder.getAbsolutePath(), imageCount, hashMap);
-            waspHash.put(batchID, batchItem);
-
-            Toast.makeText(this, "Capture details saved!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(Camera2Activity.this, HomeActivity.class));
-            finish();
+            // Ensure plant name is available for use throughout the activity
+            initializeCamera();
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
