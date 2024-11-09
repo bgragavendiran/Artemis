@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Artemis</string>
+    <string name="alliance_content_description">alliance</string>
+    <string name="artemis">ARTEMIS</string>
+    <string name="select_outpost">Select Outpost</string>
+    <string name="select_breeder_code">Select Breeder Agent code</string>
+    <string name="flower_image_collection_app">Flower Image Collection app</string>
+    <string name="otptext">otptext</string>
+    <string name="login">Login</string>
+    <string name="agent_login">Agent Login</string>
+</resources>

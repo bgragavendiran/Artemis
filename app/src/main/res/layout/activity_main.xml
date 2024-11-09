@@ -1,0 +1,125 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:id="@+id/main">
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/alliance_content_description"
+            android:src="@drawable/imageedit_6_6771742125"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="48sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/artemis"/>
+            <TextView
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/flower_image_collection_app"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Dropdown for Alliance Outposts -->
+    <Space
+        android:layout_width="0dp"
+    android:layout_weight="1" android:layout_height="0dp"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/agent_login"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:fontFamily="@font/montserrat_bold"/>
+            <Spinner
+                android:id="@+id/spinner_outposts"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:prompt="@string/select_outpost"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:fontFamily="@font/montserrat_bold"/>
+
+            <!-- Dropdown for Breeder Agent Code -->
+            <Spinner
+                android:id="@+id/spinner_breeder_code"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:prompt="@string/select_breeder_code"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:fontFamily="@font/montserrat_bold"/>
+
+            <!-- Passcode Field -->
+            <com.alliance.artemis.utils.OtpEditText
+                android:id="@+id/et_otp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:cursorVisible="false"
+                android:digits="1234567890"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textIsSelectable="false"
+                android:textSize="14sp"/>
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_weight="1" android:layout_height="0dp"/>
+
+    <ImageView
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:contentDescription="@string/alliance_content_description"
+        android:src="@drawable/alliance"/>
+</LinearLayout>

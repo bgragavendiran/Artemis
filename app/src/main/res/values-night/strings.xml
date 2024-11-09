@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alliance_content_description">alliance</string>
+    <string name="select_outpost">Select Outpost</string>
+    <string name="login">Login</string>
+    <string name="agent_login">Agent Login</string>
+</resources>
