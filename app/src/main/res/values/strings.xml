@@ -8,4 +8,8 @@
     <string name="otptext">otptext</string>
     <string name="login">Login</string>
     <string name="agent_login">Agent Login</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

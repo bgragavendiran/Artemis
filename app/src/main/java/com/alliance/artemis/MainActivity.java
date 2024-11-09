@@ -1,5 +1,6 @@
 package com.alliance.artemis;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.alliance.artemis.home.HomeActivity;
 import com.alliance.artemis.utils.OtpEditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
         // Example validation logic
         if (otp.length() == 4) {
             // TODO: Implement actual login logic here (e.g., API call)
-            Toast.makeText(this, "Login successful for Outpost: " + selectedOutpost, Toast.LENGTH_SHORT).show();
+            Intent intent =new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Please enter a valid 4-digit passcode", Toast.LENGTH_SHORT).show();
         }
