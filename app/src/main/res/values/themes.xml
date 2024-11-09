@@ -1,9 +1,62 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme with Material3 -->
     <style name="Base.Theme.Artemis" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary and secondary colors -->
+        <item name="colorPrimary">@color/electric_blue</item>
+        <item name="colorPrimaryVariant">@color/gunmetal</item>
+        <item name="colorOnPrimary">@color/mint_cream</item>
+
+        <item name="colorSecondary">@color/sgbus_green</item>
+        <item name="colorSecondaryVariant">@color/gunmetal_2</item>
+        <item name="colorOnSecondary">@color/mint_cream</item>
+
+        <!-- Background and surface colors -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/gunmetal</item>
+        <item name="colorOnBackground">@color/gunmetal_2</item>
+        <item name="colorOnSurface">@color/electric_blue</item>
+
+        <!-- Error colors (optional) -->
+        <item name="colorError">#B00020</item>
+        <item name="colorOnError">#FFFFFF</item>
+
+        <!-- Navigation bar selected icon and background colors -->
+        <item name="android:navigationBarColor">@color/gunmetal</item>
+        <item name="colorControlActivated">@color/electric_blue</item>
+
+        <!-- Customize text appearance -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/electric_blue</item>
     </style>
 
     <style name="Theme.Artemis" parent="Base.Theme.Artemis" />
+
+    <style name="Base.Theme.Artemis.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary and secondary colors -->
+        <item name="colorPrimary">@color/electric_blue</item>
+        <item name="colorPrimaryVariant">@color/gunmetal</item>
+        <item name="colorOnPrimary">@color/mint_cream</item>
+
+        <item name="colorSecondary">@color/sgbus_green</item>
+        <item name="colorSecondaryVariant">@color/gunmetal_2</item>
+        <item name="colorOnSecondary">@color/mint_cream</item>
+
+        <!-- Navigation bar selected icon and background colors -->
+        <item name="android:navigationBarColor">@color/gunmetal</item>
+        <item name="colorControlActivated">@color/electric_blue</item>
+
+        <!-- Background and surface colors -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/gunmetal</item>
+        <item name="colorOnBackground">@color/gunmetal_2</item>
+        <item name="colorOnSurface">@color/electric_blue</item>
+
+        <!-- Error colors (optional) -->
+        <item name="colorError">#B00020</item>
+        <item name="colorOnError">#FFFFFF</item>
+
+        <!-- Customize text appearance -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/electric_blue</item>
+    </style>
 </resources>

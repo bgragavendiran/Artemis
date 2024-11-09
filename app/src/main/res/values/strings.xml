@@ -10,6 +10,21 @@
     <string name="agent_login">Agent Login</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard">Gallery</string>
     <string name="title_notifications">Notifications</string>
+    <string name="image_capture_batches">Image Capture Batches</string>
+    <string name="add_new_batch">Add new batch</string>
+    <string-array name="season_array">
+        <item>Winter</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Autumn</item>
+    </string-array>
+    <string-array name="climate_array">
+        <item>Tropical</item>
+        <item>Dry</item>
+        <item>Temperate</item>
+        <item>Continental</item>
+        <item>Polar</item>
+    </string-array>
 </resources>

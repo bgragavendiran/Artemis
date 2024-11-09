@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.ui.home.HomeFragment">
+    android:layout_marginBottom="56dp"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/aasjda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="24sp"
+        android:textColor="@color/gunmetal"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/image_capture_batches"/>
+
+    <!-- RecyclerView to display list of batches -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/aasjda"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="72dp" />
+
+    <!-- FloatingActionButton to add new data -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/baseline_add_a_photo_24"
+        android:contentDescription="@string/add_new_batch"
+        app:backgroundTint="@color/electric_blue"
+        app:tint="@android:color/white" />
+
+</RelativeLayout>

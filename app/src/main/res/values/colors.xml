@@ -3,4 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimaryDark">#009688</color>
+    <color name="electric_blue">#98D2E2</color>
+    <color name="gunmetal">#09323C</color>
+    <color name="mint_cream">#F2F9F6</color>
+    <color name="sgbus_green">#87EB57</color>
+    <color name="gunmetal_2">#0C2B34</color>
 </resources>

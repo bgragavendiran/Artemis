@@ -1,0 +1,23 @@
+<!-- circular_progress.xml in res/drawable -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="ring">
+            <size android:width="16dp" android:height="16dp" />
+            <solid android:color="#E0E0E0" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <rotate
+            android:fromDegrees="270"
+            android:toDegrees="270">
+            <shape android:shape="ring">
+                <size android:width="16dp" android:height="16dp" />
+                <gradient
+                    android:type="sweep"
+                    android:useLevel="true"
+                    android:startColor="#4CAF50"
+                    android:endColor="#4CAF50" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

@@ -60,6 +60,7 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
             <TextView
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -90,6 +91,7 @@
             <!-- Passcode Field -->
             <com.alliance.artemis.utils.OtpEditText
                 android:id="@+id/et_otp"
+                android:textColor="@color/mint_cream"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:cursorVisible="false"

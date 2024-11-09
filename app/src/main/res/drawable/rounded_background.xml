@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Set the background color (you can change it to any color you like) -->
+    <solid android:color="@color/electric_blue" />
+
+    <!-- Define the corner radius for rounded edges -->
+    <corners android:radius="5dp" />
+
+    <!-- Optionally, you can add a border by specifying a stroke -->
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/white" />
+</shape>

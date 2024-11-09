@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimaryDark">#009688</color>
+    <color name="electric_blue">#3DEAF8</color>
+    <color name="gunmetal">#09323C</color>
+    <color name="mint_cream">#F2F9F6</color>
+    <color name="sgbus_green">#87EB57</color>
+    <color name="gunmetal_2">#0C2B34</color>
 </resources>

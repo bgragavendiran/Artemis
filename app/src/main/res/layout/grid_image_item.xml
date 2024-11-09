@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:background="?attr/selectableItemBackground"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+        <!-- Image preview -->
+        <FrameLayout
+            android:id="@+id/frameDummy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <!-- Sync status icon (e.g., checkmark if uploaded) -->
+           <!-- Set to VISIBLE if uploaded, GONE if not -->
+
+            <ImageView
+                android:id="@+id/image_preview"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Image preview"
+                android:background="@drawable/imageedit_6_6771742125"/>
+            <ImageView
+                android:id="@+id/sync_status_icon"
+                android:layout_gravity="right"
+                android:layout_width="24dp"
+                android:background="@color/mint_cream"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_cloud_off_24" />
+        </FrameLayout>
+
+
+        <!-- Image title (image name) -->
+        <TextView
+            android:id="@+id/image_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/frameDummy"
+            android:layout_marginTop="4dp"
+            android:text="Image Title"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <!-- Plant name as subtitle -->
+        <TextView
+            android:id="@+id/plant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_title"
+            android:layout_marginTop="2dp"
+            android:text="Plant Name"
+            android:textColor="@android:color/darker_gray"/>
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

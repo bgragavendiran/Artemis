@@ -4,4 +4,17 @@
     <string name="select_outpost">Select Outpost</string>
     <string name="login">Login</string>
     <string name="agent_login">Agent Login</string>
+    <string-array name="season_array">
+        <item>Winter</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Autumn</item>
+    </string-array>
+    <string-array name="climate_array">
+        <item>Tropical</item>
+        <item>Dry</item>
+        <item>Temperate</item>
+        <item>Continental</item>
+        <item>Polar</item>
+    </string-array>
 </resources>

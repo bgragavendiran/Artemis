@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- Camera Preview (optional) -->
+    <TextureView
+        android:id="@+id/previewFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <!-- A SurfaceView or TextureView can go here for live preview -->
+    </TextureView>
+
+    <!-- Image Count Display -->
+
+
+    <TextView
+        android:id="@+id/imageCountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:padding="10dp"
+        android:text="Images Captured: 0"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/startStopButton"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="173dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginBottom="17dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/electric_blue"
+        android:contentDescription="Start/Stop Capture"
+        android:src="@drawable/baseline_camera_alt_24"
+        app:backgroundTint="@color/electric_blue"
+         />
+
+</RelativeLayout>
