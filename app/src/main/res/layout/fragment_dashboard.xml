@@ -140,13 +140,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
+                    android:id="@+id/sync_button"
                     android:layout_height="wrap_content"
-                    android:text="Refresh"
+                    android:text="@string/sync"
                     android:textColor="@color/gunmetal"
                     android:textSize="12sp"
                     app:rippleColor="@color/colorPrimaryDark"
                     app:iconTint="@color/gunmetal"
-                    app:icon="@drawable/baseline_autorenew_24"/>
+                    app:icon="@drawable/baseline_cloud_sync_24"/>
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -16,7 +16,9 @@ public class ImageDataHelper {
     private WaspDb waspDB;
     private WaspHash imageHash;
 
+    Context context;
     public ImageDataHelper(Context context) {
+        this.context=context;
         File databaseDir = new File(context.getFilesDir(), "waspdb");
         if (!databaseDir.exists()) {
             databaseDir.mkdirs();
@@ -95,4 +97,29 @@ public class ImageDataHelper {
         }
         return uploadedImages;
     }
+
+    public List<Map<String, Object>> getImagesNotSynced() {
+        List<Map<String, Object>> unsyncedImages = new ArrayList<>();
+
+        for (Map.Entry<Object, Object> entry : imageHash.getAllData().entrySet()) {
+            Map<String, Object> imageData = (Map<String, Object>) entry.getValue();
+            boolean isUploaded = (boolean) imageData.getOrDefault("Uploaded", false);
+
+            if (!isUploaded) {
+                String imageName = (String) imageData.get("ImageName");
+                String folderName = (String) imageData.get("FolderName");
+
+                // Create full path by combining folder name and image path
+                File filePath = new File(context.getFilesDir(), folderName);
+                String fullLocalPath = new File(filePath, imageName).getAbsolutePath();
+                imageData.put("localPath", fullLocalPath);
+
+                // Include all necessary metadata, including the key as "ImagePath"
+                imageData.put("ImagePath", entry.getKey());
+                unsyncedImages.add(imageData);
+            }
+        }
+        return unsyncedImages;
+    }
+
 }

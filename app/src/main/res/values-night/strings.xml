@@ -4,6 +4,7 @@
     <string name="select_outpost">Select Outpost</string>
     <string name="login">Login</string>
     <string name="agent_login">Agent Login</string>
+    <string name="sync">Sync</string>
     <string-array name="season_array">
         <item>Winter</item>
         <item>Spring</item>

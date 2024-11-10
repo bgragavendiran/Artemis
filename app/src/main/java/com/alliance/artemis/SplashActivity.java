@@ -24,7 +24,9 @@ public class SplashActivity extends AppCompatActivity {
     private final String[] requiredPermissions = {
             Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.POST_NOTIFICATIONS
+
     };
 
     @Override
@@ -85,7 +87,7 @@ public class SplashActivity extends AppCompatActivity {
                 // Start the splash timer after permissions are granted
                 startSplashTimer();
             } else {
-                Toast.makeText(this, "Permissions are required to use this app", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "Permissions are required to use this app", Toast.LENGTH_LONG).show();
                 startSplashTimer();
             }
         }
