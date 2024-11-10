@@ -86,7 +86,12 @@ public class DashboardFragment extends Fragment {
         totalImageText.setText(String.valueOf(totalImages));
         outOfSyncText.setText(String.valueOf(totalImages - uploadedImages));
         inSyncText.setText(String.valueOf(uploadedImages));
-        syncProgressBar.setProgress((uploadedImages * 100) / totalImages);
+        if (totalImages!=0){
+            syncProgressBar.setProgress((uploadedImages * 100) / totalImages);
+        } else {
+            syncProgressBar.setIndeterminate(false);
+            syncProgressBar.setProgress(0);
+        }
 
         adapter = new GridImageAdapter(flatImageList, requireContext());
         imageRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), calculateSpanCount()));
